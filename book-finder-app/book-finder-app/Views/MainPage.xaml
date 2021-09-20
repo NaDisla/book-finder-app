@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="book_finder_app.Views.MainPage"
+             xmlns:Custom="clr-namespace:book_finder_app.Customs"
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms">
+    <ContentPage.Content>
+        <Grid >
+            <magic:GradientView VerticalOptions="FillAndExpand">
+                <magic:CssGradientSource>
+                    <![CDATA[
+                        linear-gradient(166deg, rgba(23, 23, 23, 0.04) 0%, rgba(23, 23, 23, 0.04) 32%,rgba(171, 171, 171, 0.04) 32%, rgba(171, 171, 171, 0.04) 100%),linear-gradient(121deg, rgba(173, 173, 173, 0.04) 0%, rgba(173, 173, 173, 0.04) 40%,rgba(55, 55, 55, 0.04) 40%, rgba(55, 55, 55, 0.04) 100%),linear-gradient(157.5deg, rgba(44, 44, 44, 0.04) 0%, rgba(44, 44, 44, 0.04) 52%,rgba(195, 195, 195, 0.04) 52%, rgba(195, 195, 195, 0.04) 100%),linear-gradient(157.5deg, rgba(203, 203, 203, 0.04) 0%, rgba(203, 203, 203, 0.04) 11%,rgba(89, 89, 89, 0.04) 11%, rgba(89, 89, 89, 0.04) 100%),linear-gradient(211deg, rgb(234,234,216),rgb(77,77,69))
+                    ]]>
+                </magic:CssGradientSource>
+            </magic:GradientView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="0.2*" />
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="0.4*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".5*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width=".5*" />
+                </Grid.ColumnDefinitions>
+                <lottie:AnimationView x:Name="lottie"
+                                      Animation="icon-home.json"
+                                      AutoPlay="True"
+                                      RepeatMode="Infinite"
+                                      Grid.Column="4"
+                                      Grid.Row="1" />
+                <Label Text="Encuentra el libro que deseas"
+                       Grid.Row="3"
+                       Grid.Column="3"
+                       Grid.ColumnSpan="3"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"
+                       TextColor="White"/>
+                <StackLayout Padding="0"
+                             Grid.Row="4"
+                             Grid.Column="1"
+                             Grid.ColumnSpan="4">
+                    <Frame CornerRadius="30"
+                           Padding="0">
+                        <Custom:CustomEntryRenderer Placeholder="Título del libro"
+                                                    x:Name="txtBookTitle"
+                                                    FontSize="15"
+                                                    Margin="5,0,0,0" />
+                    </Frame>
+                </StackLayout>
+                <Button Text="Buscar"
+                        x:Name="btnSearchBook"
+                        Clicked="btnSearchBook_Clicked"
+                        Grid.Row="4"
+                        Grid.Column="5"
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="#FFD15C"
+                        CornerRadius="20"
+                        FontSize="15"
+                        FontAttributes="Bold"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
