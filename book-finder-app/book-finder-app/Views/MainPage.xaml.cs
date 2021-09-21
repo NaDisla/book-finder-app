@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -28,6 +29,13 @@ namespace book_finder_app.Views
             urlApi += txtBookTitle.Text;
             var json = await client.GetStringAsync(urlApi);
             var getBooks = JsonConvert.DeserializeObject<Books>(json);
+            ObservableCollection<Items> listBooksItems = new ObservableCollection<Items>(getBooks.Items);
+            ObservableCollection<VolumeInfo> listVolumes = new ObservableCollection<VolumeInfo>();
+            foreach (var item in listBooksItems)
+            {
+                listVolumes.Add(item.VolumeInfo);
+            }
+            lvwBooks.ItemsSource = listVolumes;
         }
     }
 }

@@ -19,7 +19,10 @@
                                       Animation="icon-home.json"
                                       AutoPlay="True"
                                       RepeatMode="Infinite"
-                                      HeightRequest="200" />
+                                      HeightRequest="200"
+                                      BackgroundColor="Red"
+                                      
+                                      />
                 <Label Text="Encuentra el libro que deseas"
                        FontSize="20"
                        FontAttributes="Bold"
@@ -63,7 +66,21 @@
                 <Frame CornerRadius="15"
                        VerticalOptions="FillAndExpand"
                        Margin="10,0,10,10">
-                    
+                    <ListView x:Name="lvwBooks"
+                              RowHeight="20"
+                              Margin="0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame BackgroundColor="#e3cf9f"
+                                           CornerRadius="15"
+                                           BorderColor="Gray">
+                                        <Label Text="{Binding Title}"/>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Frame>
             </StackLayout>
         </Grid>
