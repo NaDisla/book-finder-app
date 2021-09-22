@@ -30,12 +30,25 @@ namespace book_finder_app.Views
             var json = await client.GetStringAsync(urlApi);
             var getBooks = JsonConvert.DeserializeObject<Books>(json);
             ObservableCollection<Items> listBooksItems = new ObservableCollection<Items>(getBooks.Items);
-            ObservableCollection<VolumeInfo> listVolumes = new ObservableCollection<VolumeInfo>();
+            
+            var scrollBooks = new ScrollView();
+            var layoutBooks = new StackLayout();
             foreach (var item in listBooksItems)
             {
-                listVolumes.Add(item.VolumeInfo);
+                var frameBook = new Frame() 
+                {
+                    Content = new Label { Text = item.VolumeInfo.Title },
+                    BackgroundColor = Color.FromHex("#e3cf9f"),
+                    CornerRadius = 15,
+                    BorderColor = Color.Gray,
+                    HeightRequest = 20
+                };
+                
+                layoutBooks.Children.Add(frameBook);
+                scrollBooks.Content = layoutBooks;
+                resultsFrame.Content = scrollBooks;
+                
             }
-            lvwBooks.ItemsSource = listVolumes;
         }
     }
 }

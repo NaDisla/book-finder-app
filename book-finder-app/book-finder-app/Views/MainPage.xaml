@@ -65,22 +65,8 @@
                        Margin="20,10,0,10"/>
                 <Frame CornerRadius="15"
                        VerticalOptions="FillAndExpand"
-                       Margin="10,0,10,10">
-                    <ListView x:Name="lvwBooks"
-                              RowHeight="20"
-                              Margin="0">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Frame BackgroundColor="#e3cf9f"
-                                           CornerRadius="15"
-                                           BorderColor="Gray">
-                                        <Label Text="{Binding Title}"/>
-                                    </Frame>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                       Margin="10,0,10,10"
+                       x:Name="resultsFrame">
                 </Frame>
             </StackLayout>
         </Grid>
