@@ -30,14 +30,14 @@ namespace book_finder_app.Views
             var json = await client.GetStringAsync(urlApi);
             var getBooks = JsonConvert.DeserializeObject<Books>(json);
             ObservableCollection<Items> listBooksItems = new ObservableCollection<Items>(getBooks.Items);
-            
             var scrollBooks = new ScrollView();
             var layoutBooks = new StackLayout();
+
             foreach (var item in listBooksItems)
             {
-                var frameBook = new Frame() 
+                var frameBook = new Frame()
                 {
-                    Content = new Label { Text = item.VolumeInfo.Title },
+                    Content = new Label { Text = $"Título: {item.VolumeInfo.Title}" },
                     BackgroundColor = Color.FromHex("#e3cf9f"),
                     CornerRadius = 15,
                     BorderColor = Color.Gray,
