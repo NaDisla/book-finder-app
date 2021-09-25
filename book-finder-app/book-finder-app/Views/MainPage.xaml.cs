@@ -23,41 +23,53 @@ namespace book_finder_app.Views
         public MainPage()
         {
             InitializeComponent();
-            
         }
 
         [Obsolete]
         private async void btnSearchBook_Clicked(object sender, EventArgs e)
         {
-            LoadingSearchPage loading = new LoadingSearchPage();
-            await PopupNavigation.PushAsync(loading);
-            await Task.Delay(2000);
-            urlApi += txtBookTitle.Text;
-            var json = await client.GetStringAsync(urlApi);
-            var getBooks = JsonConvert.DeserializeObject<Books>(json);
-            ObservableCollection<Items> listBooksItems = new ObservableCollection<Items>(getBooks.Items);
-            ObservableCollection<VolumeInfo> volumeInfos = new ObservableCollection<VolumeInfo>();
-            foreach (var item in listBooksItems)
+            if(string.IsNullOrEmpty(txtBookTitle.Text))
             {
-                item.VolumeInfo.SourceImage = item.VolumeInfo.ImageLinks.Thumbnail;
-                string[] authors = item.VolumeInfo.Authors;
-                
-                if (authors.Length > 1)
-                {
-                    for (int i = 0; i < authors.Length; i++)
-                    {
-                        if (i == authors.Length - 1) item.VolumeInfo.FinalAuthors += $"{authors[i]}.";
-                        else item.VolumeInfo.FinalAuthors += $"{authors[i]}, ";
-                    }
-                }
-                else
-                {
-                    item.VolumeInfo.FinalAuthors = authors[0];
-                }
-                volumeInfos.Add(item.VolumeInfo);
+                txtBookTitle.Placeholder = "Debe proporcionar un título";
+                txtBookTitle.PlaceholderColor = Color.Red;
             }
-            lvwBooks.ItemsSource = volumeInfos;
-            await PopupNavigation.RemovePageAsync(loading);
+            else
+            {
+                LoadingSearchPage loading = new LoadingSearchPage();
+                await PopupNavigation.PushAsync(loading);
+                await Task.Delay(2000);
+                urlApi += txtBookTitle.Text;
+                var json = await client.GetStringAsync(urlApi);
+                var getBooks = JsonConvert.DeserializeObject<Books>(json);
+                ObservableCollection<Items> listBooksItems = new ObservableCollection<Items>(getBooks.Items);
+                ObservableCollection<VolumeInfo> volumeInfos = new ObservableCollection<VolumeInfo>();
+                foreach (var item in listBooksItems)
+                {
+                    item.VolumeInfo.SourceImage = item.VolumeInfo.ImageLinks.Thumbnail;
+                    string[] authors = item.VolumeInfo.Authors;
+
+                    if (authors.Length > 1)
+                    {
+                        for (int i = 0; i < authors.Length; i++)
+                        {
+                            if (i == authors.Length - 1) item.VolumeInfo.FinalAuthors += $"{authors[i]}.";
+                            else item.VolumeInfo.FinalAuthors += $"{authors[i]}, ";
+                        }
+                    }
+                    else
+                    {
+                        item.VolumeInfo.FinalAuthors = authors[0];
+                    }
+                    volumeInfos.Add(item.VolumeInfo);
+                }
+                lvwBooks.ItemsSource = volumeInfos;
+                lblResults.IsVisible = true;
+                resultsFrame.IsVisible = true;
+                await PopupNavigation.RemovePageAsync(loading);
+                txtBookTitle.Text = "";
+                txtBookTitle.Placeholder = "Título del libro";
+                txtBookTitle.PlaceholderColor = Color.Default;
+            }
         }
 
         [Obsolete]
@@ -67,6 +79,5 @@ namespace book_finder_app.Views
             var volumeInfo = button.BindingContext as VolumeInfo;
             await PopupNavigation.PushAsync(new BookDescriptionPage(volumeInfo.Description));
         }
-
     }
 }

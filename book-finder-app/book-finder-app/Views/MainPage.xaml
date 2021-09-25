@@ -19,7 +19,7 @@
                                       Animation="icon-home.json"
                                       AutoPlay="True"
                                       RepeatMode="Infinite"
-                                      HeightRequest="200"/>
+                                      HeightRequest="200" />
                 <Label Text="Encuentra el libro que deseas"
                        FontSize="20"
                        FontAttributes="Bold"
@@ -35,9 +35,8 @@
                                                     x:Name="txtBookTitle"
                                                     FontSize="15"
                                                     Margin="15,0,0,0"
-                                                    Keyboard="Text"/>
+                                                    Keyboard="Text" />
                     </Frame>
-
                     <Button Text="Buscar"
                             x:Name="btnSearchBook"
                             Clicked="btnSearchBook_Clicked"
@@ -50,14 +49,17 @@
                             HorizontalOptions="EndAndExpand" />
                 </StackLayout>
                 <Label Text="Resultados:"
+                       x:Name="lblResults"
+                       IsVisible="False"
                        FontAttributes="Bold"
-                       FontSize="16"
-                       TextColor="#3E3620"
-                       Margin="20,10,0,10"/>
+                       FontSize="17"
+                       TextColor="White"
+                       Margin="20,10,0,10" />
                 <Frame CornerRadius="15"
                        VerticalOptions="FillAndExpand"
                        Margin="10,0,10,10"
-                       x:Name="resultsFrame">
+                       x:Name="resultsFrame"
+                       IsVisible="False">
                     <ListView x:Name="lvwBooks"
                               RowHeight="110"
                               SeparatorVisibility="None"
@@ -70,17 +72,17 @@
                                            BackgroundColor="#e3cf9f"
                                            Padding="0"
                                            Margin="0,0,0,5">
-                                        <StackLayout Padding="10,10,10,0" 
+                                        <StackLayout Padding="10,10,10,0"
                                                      Orientation="Horizontal">
                                             <StackLayout HorizontalOptions="Start"
                                                          VerticalOptions="Center">
-                                                <Image Source="{Binding SourceImage}" 
-                                                       Margin="0,0,10,0"/>
+                                                <Image Source="{Binding SourceImage}"
+                                                       Margin="0,0,10,0" />
                                             </StackLayout>
                                             <StackLayout HorizontalOptions="End">
                                                 <Label Text="{Binding Title}"
                                                        FontAttributes="Bold"
-                                                       FontSize="18" />
+                                                       FontSize="16" />
                                                 <Label Text="{Binding FinalAuthors}"
                                                        FontSize="15" />
                                                 <Label Text="{Binding PublishedDate}"
@@ -94,7 +96,7 @@
                                                     CornerRadius="25"
                                                     HeightRequest="30"
                                                     Padding="10,0,10,0"
-                                                    BackgroundColor="White"/>
+                                                    BackgroundColor="White" />
                                         </StackLayout>
                                     </Frame>
                                 </ViewCell>

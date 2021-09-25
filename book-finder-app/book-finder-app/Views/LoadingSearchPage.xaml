@@ -21,23 +21,26 @@
                                         ScaleOut="1.2" />
     </pages:PopupPage.Animation>
     <Frame CornerRadius="15"
-           OutlineColor="#FFD15C">
-        <StackLayout BackgroundColor="White"
-                     VerticalOptions="FillAndExpand"
-                     HorizontalOptions="FillAndExpand"
-                     Padding="0">
-            <Label Text="Buscando..."
+           BackgroundColor="White"
+           OutlineColor="#FFD15C"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"
+           HeightRequest="250">
+        <StackLayout>
+            <Label Text="Buscando tu libro..."
                    FontSize="16"
                    FontAttributes="Bold"
-                   TextColor="#3E3620"
-                   HorizontalTextAlignment="Center"/>
+                   TextColor="#3E3620" />
             <BoxView HeightRequest="1"
                      BackgroundColor="Gray" />
-            <lottieView:AnimationView Animation="book-search.json"
-                                      AutoPlay="True"
-                                      RepeatMode="Infinite"
-                                      VerticalOptions="FillAndExpand"
-                                      HorizontalOptions="FillAndExpand"/>
+            <StackLayout>
+                <lottieView:AnimationView Animation="book-search.json"
+                                          AutoPlay="True"
+                                          RepeatMode="Infinite"
+                                          HeightRequest="200"
+                                          WidthRequest="200"
+                                          VerticalOptions="CenterAndExpand" />
+            </StackLayout>
         </StackLayout>
     </Frame>
 </pages:PopupPage>
