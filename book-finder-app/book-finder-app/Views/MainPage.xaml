@@ -19,34 +19,25 @@
                                       Animation="icon-home.json"
                                       AutoPlay="True"
                                       RepeatMode="Infinite"
-                                      HeightRequest="200"
-                                      BackgroundColor="Red"
-                                      
-                                      />
+                                      HeightRequest="200"/>
                 <Label Text="Encuentra el libro que deseas"
                        FontSize="20"
                        FontAttributes="Bold"
                        HorizontalTextAlignment="Center"
                        Margin="0,0,0,10"
                        TextColor="White" />
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="4*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Padding="0">
-                        <Frame CornerRadius="30"
-                               Padding="0"
-                               Margin="10,0,5,0">
-                            <Custom:CustomEntryRenderer Placeholder="Título del libro"
-                                                        x:Name="txtBookTitle"
-                                                        FontSize="15"
-                                                        Margin="15,0,0,0" />
-                        </Frame>
-                    </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Frame CornerRadius="30"
+                           Padding="0"
+                           Margin="10,0,5,0"
+                           WidthRequest="500">
+                        <Custom:CustomEntryRenderer Placeholder="Título del libro"
+                                                    x:Name="txtBookTitle"
+                                                    FontSize="15"
+                                                    Margin="15,0,0,0"
+                                                    Keyboard="Text"/>
+                    </Frame>
+
                     <Button Text="Buscar"
                             x:Name="btnSearchBook"
                             Clicked="btnSearchBook_Clicked"
@@ -54,10 +45,10 @@
                             CornerRadius="20"
                             FontSize="15"
                             FontAttributes="Bold"
-                            Grid.Column="1"
                             HeightRequest="10"
-                            Margin="0,0,10,0" />
-                </Grid>
+                            Margin="0,0,10,0"
+                            HorizontalOptions="EndAndExpand" />
+                </StackLayout>
                 <Label Text="Resultados:"
                        FontAttributes="Bold"
                        FontSize="16"
@@ -67,6 +58,49 @@
                        VerticalOptions="FillAndExpand"
                        Margin="10,0,10,10"
                        x:Name="resultsFrame">
+                    <ListView x:Name="lvwBooks"
+                              RowHeight="110"
+                              SeparatorVisibility="None"
+                              SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame CornerRadius="15"
+                                           BorderColor="Gray"
+                                           BackgroundColor="#e3cf9f"
+                                           Padding="0"
+                                           Margin="0,0,0,5">
+                                        <StackLayout Padding="10,10,10,0" 
+                                                     Orientation="Horizontal">
+                                            <StackLayout HorizontalOptions="Start"
+                                                         VerticalOptions="Center">
+                                                <Image Source="{Binding SourceImage}" 
+                                                       Margin="0,0,10,0"/>
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="End">
+                                                <Label Text="{Binding Title}"
+                                                       FontAttributes="Bold"
+                                                       FontSize="18" />
+                                                <Label Text="{Binding FinalAuthors}"
+                                                       FontSize="15" />
+                                                <Label Text="{Binding PublishedDate}"
+                                                       FontSize="13" />
+                                            </StackLayout>
+                                            <Button Text="Ver descripción"
+                                                    x:Name="btnBookDescription"
+                                                    Clicked="btnBookDescription_Clicked"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    VerticalOptions="Center"
+                                                    CornerRadius="25"
+                                                    HeightRequest="30"
+                                                    Padding="10,0,10,0"
+                                                    BackgroundColor="White"/>
+                                        </StackLayout>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </Frame>
             </StackLayout>
         </Grid>

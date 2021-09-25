@@ -3,6 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="book_finder_app.App">
     <Application.Resources>
-
+        
     </Application.Resources>
 </Application>

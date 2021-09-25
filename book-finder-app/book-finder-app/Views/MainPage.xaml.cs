@@ -1,5 +1,6 @@
 ﻿using book_finder_app.Models;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,37 +19,54 @@ namespace book_finder_app.Views
     {
         string urlApi = "https://www.googleapis.com/books/v1/volumes?q=";
         HttpClient client = new HttpClient();
-
+        
         public MainPage()
         {
             InitializeComponent();
+            
         }
 
+        [Obsolete]
         private async void btnSearchBook_Clicked(object sender, EventArgs e)
         {
+            LoadingSearchPage loading = new LoadingSearchPage();
+            await PopupNavigation.PushAsync(loading);
+            await Task.Delay(2000);
             urlApi += txtBookTitle.Text;
             var json = await client.GetStringAsync(urlApi);
             var getBooks = JsonConvert.DeserializeObject<Books>(json);
             ObservableCollection<Items> listBooksItems = new ObservableCollection<Items>(getBooks.Items);
-            var scrollBooks = new ScrollView();
-            var layoutBooks = new StackLayout();
-
+            ObservableCollection<VolumeInfo> volumeInfos = new ObservableCollection<VolumeInfo>();
             foreach (var item in listBooksItems)
             {
-                var frameBook = new Frame()
+                item.VolumeInfo.SourceImage = item.VolumeInfo.ImageLinks.Thumbnail;
+                string[] authors = item.VolumeInfo.Authors;
+                
+                if (authors.Length > 1)
                 {
-                    Content = new Label { Text = $"Título: {item.VolumeInfo.Title}" },
-                    BackgroundColor = Color.FromHex("#e3cf9f"),
-                    CornerRadius = 15,
-                    BorderColor = Color.Gray,
-                    HeightRequest = 20
-                };
-                
-                layoutBooks.Children.Add(frameBook);
-                scrollBooks.Content = layoutBooks;
-                resultsFrame.Content = scrollBooks;
-                
+                    for (int i = 0; i < authors.Length; i++)
+                    {
+                        if (i == authors.Length - 1) item.VolumeInfo.FinalAuthors += $"{authors[i]}.";
+                        else item.VolumeInfo.FinalAuthors += $"{authors[i]}, ";
+                    }
+                }
+                else
+                {
+                    item.VolumeInfo.FinalAuthors = authors[0];
+                }
+                volumeInfos.Add(item.VolumeInfo);
             }
+            lvwBooks.ItemsSource = volumeInfos;
+            await PopupNavigation.RemovePageAsync(loading);
         }
+
+        [Obsolete]
+        private async void btnBookDescription_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var volumeInfo = button.BindingContext as VolumeInfo;
+            await PopupNavigation.PushAsync(new BookDescriptionPage(volumeInfo.Description));
+        }
+
     }
 }
