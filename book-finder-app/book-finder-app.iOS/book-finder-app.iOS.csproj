@@ -138,4 +138,7 @@
       <Name>book-finder-app</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\error.jpg" />
+  </ItemGroup>
 </Project>

@@ -28,18 +28,22 @@
             <Label Text="Descripción del libro"
                    FontSize="16"
                    TextColor="#3E3620"
-                   FontAttributes="Bold"/>
+                   FontFamily="RobotoSlab-Bold"/>
             <BoxView HeightRequest="1" 
                      BackgroundColor="Gray"/>
             <StackLayout Spacing="0"
                          Orientation="Horizontal">
-                <Label x:Name="lblBookDescription"
-                       FontSize="15"
-                       Margin="10,10,0,0"/>
+                <ScrollView>
+                    <Label x:Name="lblBookDescription"
+                           FontFamily="RobotoSlab-Regular"
+                           FontSize="15"
+                           Margin="10,10,0,0" />
+                </ScrollView>
             </StackLayout>
             <Button x:Name="btnCloseDescription"
                     Clicked="btnCloseDescription_Clicked"
                     Text="OK"
+                    FontFamily="RobotoSlab-Medium"
                     HeightRequest="40"
                     CornerRadius="25"
                     BackgroundColor="#FFD15C"

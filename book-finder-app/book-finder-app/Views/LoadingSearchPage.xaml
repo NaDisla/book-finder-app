@@ -29,7 +29,7 @@
         <StackLayout>
             <Label Text="Buscando tu libro..."
                    FontSize="16"
-                   FontAttributes="Bold"
+                   FontFamily="RobotoSlab-Bold"
                    TextColor="#3E3620" />
             <BoxView HeightRequest="1"
                      BackgroundColor="Gray" />

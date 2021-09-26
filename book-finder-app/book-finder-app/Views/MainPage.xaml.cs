@@ -2,13 +2,9 @@
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,9 +13,7 @@ namespace book_finder_app.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        string urlApi = "https://www.googleapis.com/books/v1/volumes?q=";
         HttpClient client = new HttpClient();
-        
         public MainPage()
         {
             InitializeComponent();
@@ -38,27 +32,44 @@ namespace book_finder_app.Views
                 LoadingSearchPage loading = new LoadingSearchPage();
                 await PopupNavigation.PushAsync(loading);
                 await Task.Delay(2000);
-                urlApi += txtBookTitle.Text;
+                string urlApi = "https://www.googleapis.com/books/v1/volumes?q="+txtBookTitle.Text;
                 var json = await client.GetStringAsync(urlApi);
                 var getBooks = JsonConvert.DeserializeObject<Books>(json);
                 ObservableCollection<Items> listBooksItems = new ObservableCollection<Items>(getBooks.Items);
                 ObservableCollection<VolumeInfo> volumeInfos = new ObservableCollection<VolumeInfo>();
                 foreach (var item in listBooksItems)
                 {
-                    item.VolumeInfo.SourceImage = item.VolumeInfo.ImageLinks.Thumbnail;
-                    string[] authors = item.VolumeInfo.Authors;
-
-                    if (authors.Length > 1)
+                    if (item.VolumeInfo.ImageLinks == null || string.IsNullOrEmpty(item.VolumeInfo.ImageLinks.Thumbnail))
                     {
-                        for (int i = 0; i < authors.Length; i++)
-                        {
-                            if (i == authors.Length - 1) item.VolumeInfo.FinalAuthors += $"{authors[i]}.";
-                            else item.VolumeInfo.FinalAuthors += $"{authors[i]}, ";
-                        }
+                        item.VolumeInfo.SourceImage = "error.jpg";
                     }
                     else
                     {
-                        item.VolumeInfo.FinalAuthors = authors[0];
+                        item.VolumeInfo.SourceImage = item.VolumeInfo.ImageLinks.Thumbnail;
+                    }
+                    if (item.VolumeInfo.Authors == null)
+                    {
+                        item.VolumeInfo.FinalAuthors = "Desconocido";
+                    }
+                    else
+                    {
+                        string[] authors = item.VolumeInfo.Authors;
+                        if (authors.Length > 1)
+                        {
+                            for (int i = 0; i < authors.Length; i++)
+                            {
+                                if (i == authors.Length - 1) item.VolumeInfo.FinalAuthors += $"{authors[i]}.";
+                                else item.VolumeInfo.FinalAuthors += $"{authors[i]}, ";
+                            }
+                        }
+                        else
+                        {
+                            item.VolumeInfo.FinalAuthors = authors[0];
+                        }
+                    }
+                    if(string.IsNullOrEmpty(item.VolumeInfo.Description))
+                    {
+                        item.VolumeInfo.Description = "No hay descripción de este libro.";
                     }
                     volumeInfos.Add(item.VolumeInfo);
                 }

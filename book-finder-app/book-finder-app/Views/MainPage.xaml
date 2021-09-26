@@ -20,9 +20,9 @@
                                       AutoPlay="True"
                                       RepeatMode="Infinite"
                                       HeightRequest="200" />
-                <Label Text="Encuentra el libro que deseas"
+                <Label Text="Encuentra cualquier libro"
+                       FontFamily="RobotoSlab-Bold"
                        FontSize="20"
-                       FontAttributes="Bold"
                        HorizontalTextAlignment="Center"
                        Margin="0,0,0,10"
                        TextColor="White" />
@@ -35,7 +35,8 @@
                                                     x:Name="txtBookTitle"
                                                     FontSize="15"
                                                     Margin="15,0,0,0"
-                                                    Keyboard="Text" />
+                                                    Keyboard="Text"
+                                                    FontFamily="RobotoSlab-Regular" />
                     </Frame>
                     <Button Text="Buscar"
                             x:Name="btnSearchBook"
@@ -43,7 +44,7 @@
                             BackgroundColor="#FFD15C"
                             CornerRadius="20"
                             FontSize="15"
-                            FontAttributes="Bold"
+                            FontFamily="RobotoSlab-Medium"
                             HeightRequest="10"
                             Margin="0,0,10,0"
                             HorizontalOptions="EndAndExpand" />
@@ -51,7 +52,7 @@
                 <Label Text="Resultados:"
                        x:Name="lblResults"
                        IsVisible="False"
-                       FontAttributes="Bold"
+                       FontFamily="RobotoSlab-Bold"
                        FontSize="17"
                        TextColor="White"
                        Margin="20,10,0,10" />
@@ -81,18 +82,21 @@
                                             </StackLayout>
                                             <StackLayout HorizontalOptions="End">
                                                 <Label Text="{Binding Title}"
-                                                       FontAttributes="Bold"
-                                                       FontSize="16" />
+                                                       FontFamily="RobotoSlab-Medium"
+                                                       FontSize="14"/>
                                                 <Label Text="{Binding FinalAuthors}"
-                                                       FontSize="15" />
+                                                       FontFamily="RobotoSlab-Regular"
+                                                       FontSize="12" />
                                                 <Label Text="{Binding PublishedDate}"
-                                                       FontSize="13" />
+                                                       FontFamily="RobotoSlab-Light"
+                                                       FontSize="11" />
                                             </StackLayout>
                                             <Button Text="Ver descripción"
                                                     x:Name="btnBookDescription"
                                                     Clicked="btnBookDescription_Clicked"
                                                     HorizontalOptions="EndAndExpand"
                                                     VerticalOptions="Center"
+                                                    FontFamily="RobotoSlab-Bold"
                                                     CornerRadius="25"
                                                     HeightRequest="30"
                                                     Padding="10,0,10,0"
