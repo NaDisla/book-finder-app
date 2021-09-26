@@ -198,4 +198,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\error.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.png" />
+  </ItemGroup>
 </Project>
