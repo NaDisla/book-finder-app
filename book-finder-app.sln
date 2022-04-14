@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31515.178
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "book-finder-app.Android", "book-finder-app\book-finder-app.Android\book-finder-app.Android.csproj", "{819FEE46-3538-4D32-8A11-A2CAE7E34B7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "book-finder-app.iOS", "book-finder-app\book-finder-app.iOS\book-finder-app.iOS.csproj", "{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "book-finder-app", "book-finder-app\book-finder-app\book-finder-app.csproj", "{1F31C223-FBFD-4D21-86D5-CEED7B2E07E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "book-finder-app", "book-finder-app\book-finder-app\book-finder-app.csproj", "{1F31C223-FBFD-4D21-86D5-CEED7B2E07E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,24 +35,6 @@ Global
 		{819FEE46-3538-4D32-8A11-A2CAE7E34B7D}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{819FEE46-3538-4D32-8A11-A2CAE7E34B7D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{819FEE46-3538-4D32-8A11-A2CAE7E34B7D}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Debug|Any CPU.ActiveCfg = Debug|iPhone
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Debug|Any CPU.Build.0 = Debug|iPhone
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Debug|Any CPU.Deploy.0 = Debug|iPhone
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Debug|iPhone.Build.0 = Debug|iPhone
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Debug|iPhone.Deploy.0 = Debug|iPhone
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Debug|iPhoneSimulator.Deploy.0 = Debug|iPhoneSimulator
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Release|Any CPU.Deploy.0 = Release|iPhoneSimulator
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Release|iPhone.ActiveCfg = Release|iPhone
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Release|iPhone.Build.0 = Release|iPhone
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Release|iPhone.Deploy.0 = Release|iPhone
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{7F2F9B2A-142C-44A8-A34F-C5D826B5CD94}.Release|iPhoneSimulator.Deploy.0 = Release|iPhoneSimulator
 		{1F31C223-FBFD-4D21-86D5-CEED7B2E07E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F31C223-FBFD-4D21-86D5-CEED7B2E07E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F31C223-FBFD-4D21-86D5-CEED7B2E07E9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU

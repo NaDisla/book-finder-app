@@ -32,5 +32,7 @@
 	<string>book_finder_app</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/Icon.appiconset</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
 </dict>
 </plist>
